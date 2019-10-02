@@ -1039,9 +1039,9 @@
 ;; misc function
 ;;
 (ros::roseus-add-srvs "std_srvs")
-(defun call-empty-service (srvname &key (wait nil))
+(defun call-empty-service (srvname &key (wait nil) (timeout -1))
   "Call empty service and return t"
-  (when (ros::wait-for-service srvname (if wait -1 0))
+  (when (ros::wait-for-service srvname (if wait timeout 0))
     (ros::service-call srvname (instance std_srvs::EmptyRequest :init))
     t))
 
