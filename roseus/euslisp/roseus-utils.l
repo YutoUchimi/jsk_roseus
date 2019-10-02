@@ -104,7 +104,7 @@
                          (copy-object (send msg :data)))))
     (when (string= (send msg :encoding) "bgr8")
       (swap-rgb img24))
-    img24)))
+    img24))
 ) ;; end of when
 ;;
 ;; 3dpoint cloud
