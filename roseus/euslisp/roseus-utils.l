@@ -1040,9 +1040,10 @@
 ;;
 (ros::roseus-add-srvs "std_srvs")
 (defun call-empty-service (srvname &key (wait nil))
-  "Call empty service"
+  "Call empty service and return t"
   (if wait (ros::wait-for-service srvname))
-  (ros::service-call srvname (instance std_srvs::EmptyRequest :init)))
+  (ros::service-call srvname (instance std_srvs::EmptyRequest :init))
+  t)
 
 (defun one-shot-subscribe (topic-name mclass &key (timeout) (after-stamp) (unsubscribe t))
   "Subscribe message, just for once"
